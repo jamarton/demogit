@@ -1,0 +1,7 @@
+<h1>Mantenimiento de personasss</h1>
+<ng-container [ngSwitch]="vm.Modo">
+	<app-personas-add *ngSwitchCase="'Modo.add'"></app-personas-add>
+	<app-personas-form *ngSwitchCase="'Modo.edit'"></app-personas-form>
+	<app-personas-view *ngSwitchCase="'Modo.view'"></app-personas-view>
+	<app-personas-list *ngSwitchDefault></app-personas-list>
+</ng-container>
