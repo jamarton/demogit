@@ -1,2 +1,2 @@
 # demogit
-Demo del curso
+Demos del curso
