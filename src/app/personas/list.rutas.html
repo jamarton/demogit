@@ -1,0 +1,8 @@
+<ul>
+    <li *ngFor="let p of vm.Listado">
+        <a [routerLink]="[ '/personas', p.id ]" >{{p.nombre}} {{p.apellidos}}</a>
+        <button routerLink="/personas/{{p.id}}/edit">Editar</button>
+        <button (click)="vm.remove(p.id)">Borrar</button>
+    </li>
+</ul>
+<button routerLink="/personas/add">Añadir</button>

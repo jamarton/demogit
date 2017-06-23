@@ -1,0 +1,48 @@
+<table>
+  <tr>
+    <td><calculadora (updated)="ponResultado('UNO', $event)"></calculadora></td>
+    <td >
+      <table border="1">
+        <tr><th>Nº</th><th>Calc</th><th>Resultado</th></tr>
+        <tr  *ngFor="let r of resultados | slice:-5">
+          <td class="text-right">{{r.pos}}</td>
+          <td>{{r.origen}}</td>
+          <!--<td class="text-right">{{r.valor | number:'1.0-5'}}</td>-->
+          <td class="text-right">{{r.valor }}</td>
+        </tr>
+      </table>
+    </td>
+    <td><calculadora [init]="'666'" (updated)="ponResultado('DOS', $event)"></calculadora></td>
+  </tr>
+</table><h1 [hidden]="!ocultar">{{titulo}}</h1>
+<h3 [hidden]="ocultar">{{titulo}}</h3>
+<div *ngIf="!ocultar">
+  Esto existe.
+  2 + {{fontSizePx | currency | uppercase }} = {{ fontSizePx + 2 }} {{fecha | date}}
+</div>
+<p>
+  <input type="text" [(ngModel)]="nombre">
+  <button (click)="saluda()">Saluda</button>
+  <button (click)="despide()">Despide</button>
+  <button (click)="diAlgo('algo')">Dime algo</button>
+  <button (click)="cambiaVer()">Oculta</button>
+</p>
+<p [style.font-size.px]="fontSizePx">El nombre: {{nombre}}</p>
+<my-sizer [(size)]="fontSizePx"></my-sizer>
+{{lista|json}}
+<ul>
+  <li *ngFor="let p of lista | slice:0:-3; let ind=index; let fondo=odd;" 
+  [style.background-color]="fondo ? 'LightBlue' : 'Lavender'">
+      {{ind}} {{p.nombre}} ({{p.id}})
+  </li>
+</ul>
+<p>
+  Selecciona: <select [(ngModel)]="idProvincia" >
+  <option value="">--Elige opción--</option>
+  <option *ngFor="let p of lista" [value]="p.id">{{p.nombre | capitalize}}</option>
+</select>
+Seleccionado: {{idProvincia}}
+  <button (click)="addProvincia('cordoba')">Añade Cordoba</button>
+  <button (click)="addProvincia('Sevilla')">Añade Sevilla</button>
+</p>
+<p>{{texto | elipsis:fontSizePx }}</p>

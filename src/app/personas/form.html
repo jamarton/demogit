@@ -1,0 +1,32 @@
+<form #miForm="ngForm">
+    <p>
+        <b>Código: </b>
+        <input type="number" id="id" name="id" #cod="ngModel" 
+            [(ngModel)]="vm.Elemento.id" required>
+        <span class="errorMsg" [hidden]="cod.valid || miForm.pristine">El codigo es obligatorio.</span>
+        <br>
+        <b>Nombre: </b>
+        <input type="text" id="nombre" name="nombre" #nombre="ngModel" 
+            [(ngModel)]="vm.Elemento.nombre" required minlength="2" maxlength="50" >
+        <span class="errorMsg" [hidden]="!nombre?.errors?.required">Es obligatorio.</span>
+        <span class="errorMsg" [hidden]="!nombre?.errors?.minlength && !nombre?.errors?.maxlength">
+            El nombre debe tener entre 3 y 50 letras.</span>
+        <span class="errorMsg" *ngIf="nombre?.errors?.upperCase">Tiene que ir en mayúsculas.</span>
+        <br>
+        <b>Apellidos: </b>
+        <input type="text" id="apellidos" name="apellidos" #apellidos="ngModel" 
+            [(ngModel)]="vm.Elemento.apellidos" minlength="2" maxlength="10">
+        <span class="errorMsg" [hidden]="!apellidos?.errors?.minlength && !apellidos?.errors?.maxlength">
+            El nombre debe tener entre 3 y 50 letras.</span>
+        <br>
+        <b>Edad: </b>
+        <input type="number" id="edad" name="edad" #edad="ngModel" 
+            [(ngModel)]="vm.Elemento.edad" min="18" max="67">
+        <span class="errorMsg" [hidden]="edad.valid">
+            Entre 18 y 67 letras.</span>
+    </p>
+    <p>
+        <button (click)="vm.send()" [disabled]="miForm.invalid">Enviar</button>
+        <button (click)="vm.cancel()">Volver</button>
+    </p>
+</form>

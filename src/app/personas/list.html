@@ -1,0 +1,9 @@
+<ul>
+    <li *ngFor="let p of vm.Listado">
+        {{p.nombre}} {{p.apellidos}} 
+        <button (click)="vm.view(p.id)">Ver</button>
+        <button (click)="vm.modify(p.id)">Editar</button>
+        <button (click)="vm.remove(p.id)">Borrar</button>
+    </li>
+</ul>
+<button (click)="vm.add()">Añadir</button>
