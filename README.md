@@ -1,2 +1,2 @@
 # demogit
-Demos del curso
+Demos del curso Angular2
